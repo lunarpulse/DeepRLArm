@@ -39,18 +39,18 @@ if [ $BUILD_PYTORCH = "ON" ] || [ $BUILD_PYTORCH = "YES" ] || [ $BUILD_PYTORCH =
 
 	echo "[Pre-build]  beginning pyTorch setup"
 
-	sudo apt-get install python-pip
+        #sudo apt-get install python-pip
 
 	# upgrade pip
-	pip install -U pip
+	#pip install -U pip
 	pip --version
 	# pip 9.0.1 from /home/ubuntu/.local/lib/python2.7/site-packages (python 2.7)
 
 	# setproctitle extension used by A3G
-	# sudo pip install setproctitle 
+	# sudo python -m pip install setproctitle 
 
 	# install numpy
-	sudo pip install numpy
+	sudo python -m python -m pip install numpy
 	sudo apt-get install python-gi-cairo
 
 	# see https://github.com/torch/cutorch/issues/797
@@ -67,8 +67,8 @@ if [ $BUILD_PYTORCH = "ON" ] || [ $BUILD_PYTORCH = "YES" ] || [ $BUILD_PYTORCH =
 	git submodule update --init
 
 	# install prereqs
-	sudo pip install -U setuptools
-	sudo pip install -r requirements.txt
+	sudo python -m pip install -U setuptools
+	sudo python -m pip install -r requirements.txt
 
 	# Develop Mode:
 	python setup.py build_deps
@@ -83,14 +83,14 @@ if [ $BUILD_PYTORCH = "ON" ] || [ $BUILD_PYTORCH = "YES" ] || [ $BUILD_PYTORCH =
 	cd ../../
 
 	git clone https://github.com/pytorch/examples
-	sudo pip install -r examples/reinforcement_learning/requirements.txt 
+	sudo python -m pip install -r examples/reinforcement_learning/requirements.txt 
 
 	git clone https://github.com/pytorch/vision
 	cd vision
 	sudo python setup.py install
 
 	sudo apt-get install swig
-	sudo pip install box2D
+	sudo python -m pip install box2D
 
 	cd ../../
 
@@ -257,10 +257,10 @@ echo ""
 
 #echo "installing iTorch"
 #sudo apt-get install libzmq3-dev libssl-dev python-zmq
-#sudo pip install ipython
+#sudo python -m python -m pip install ipython
 #ipython --version
 ## pip uninstall IPython
-## pip install ipython==3.2.1
+## python -m pip install ipython==3.2.1
 #sudo pip install jupyter
 #git clone https://github.com/facebook/iTorch.git
 #$TORCH_PREFIX/bin/luarocks install $BUILD_ROOT/iTorch/itorch-scm-1.rockspec
